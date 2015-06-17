@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shortplan_back"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:layout_height="60dp"
+        android:layout_width="fill_parent"
+        android:background="@drawable/shortplan_textback">
+        
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"
+            android:text="选择时长"/>
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:layout_height="60dp"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal">
+        
+        <ImageView 
+            android:id="@+id/halfBt"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:src="@drawable/shortplan_bt_halfhour"
+            android:onClick="onHalfClick"/>
+        
+        <ImageView 
+            android:id="@+id/oneBt"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:src="@drawable/shortplan_bt_onehour"
+            android:onClick="onOneClick"/>
+
+        <ImageView 
+            android:id="@+id/twoBt"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:src="@drawable/shortplan_bt_twohour"
+            android:onClick="onTwoClick"/>
+
+        <ImageView 
+            android:id="@+id/threeBt"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:src="@drawable/shortplan_bt_threehour"
+            android:onClick="onThreeClick"/>
+    </LinearLayout>
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.8">
+	    <Chronometer 
+	        android:id="@+id/chronometer"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"
+	        android:textColor="#000000"
+	        android:textSize="90sp"/>
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+		<ImageView 
+		    android:id="@+id/shortPlanBottomButton"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:src="@drawable/shortplan_bt_start"
+		    android:onClick="onBottomButtonClick"/>
+
+		<ImageView 
+		    android:id="@+id/shortPlanChest"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_centerHorizontal="true"
+		    android:layout_centerVertical="true"
+		    android:visibility="gone"
+		    android:onClick="onChestClick"/>
+    </RelativeLayout>
+
+</LinearLayout>

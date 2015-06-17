@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4F94CD"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/taskHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.85"
+        android:paddingBottom="10dp"
+        android:paddingEnd="5dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="5dp"
+        android:paddingStart="35dp"
+        android:paddingTop="10dp"
+        android:text="xxx"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/numOfTask"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15"
+        android:textColor="#000000"
+        android:text="" />
+
+</LinearLayout>

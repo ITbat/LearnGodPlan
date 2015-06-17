@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <EditText 
+             android:id="@+id/newplan_taskNameEdit"
+             android:layout_width="0dp"
+             android:layout_height="fill_parent"
+             android:layout_weight="1"
+             android:hint="输入计划名称"/>
+       <EditText 
+             android:id="@+id/newplan_taskTimeEdit"
+             android:layout_width="0dp"
+             android:layout_height="fill_parent"
+             android:layout_weight="1"
+             android:numeric="integer"    
+             android:hint="只接受整数(小时)"/>
+    </LinearLayout>
+    
+    <TextView 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:background="#C6E2FF"
+       android:text="选择开始日期" />
+    
+    <DatePicker
+        android:id="@+id/startDatePicker"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:calendarViewShown="false" />
+
+    <TextView 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:background="#C6E2FF"
+       android:text="选择结束日期" />
+    
+    <DatePicker 
+        android:id="@+id/endDatePicker"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:calendarViewShown="false"
+        />
+    
+    <TextView 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:background="#C6E2FF"
+       android:text="选择优先级" />
+    
+    <LinearLayout 
+       android:layout_width="fill_parent"
+       android:layout_height="30dp"
+       android:orientation="horizontal"
+       android:background="#C2C2C2"
+       >
+       <ImageView 
+           android:id="@+id/priorityStar1"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="fill_parent"
+           android:src="@drawable/newplan_star"
+	       android:onClick="onStarClick"/>
+       <ImageView 
+           android:id="@+id/priorityStar2"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="fill_parent"
+           android:src="@drawable/newplan_star"
+		   android:onClick="onStarClick"/>
+       <ImageView 
+           android:id="@+id/priorityStar3"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="fill_parent"
+           android:src="@drawable/newplan_star"
+           android:onClick="onStarClick"/>
+       <ImageView 
+           android:id="@+id/priorityStar4"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           android:layout_weight="1"
+           android:src="@drawable/newplan_star"
+           android:onClick="onStarClick"/>
+       <ImageView 
+           android:id="@+id/priorityStar5"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="fill_parent"
+           android:src="@drawable/newplan_star"
+           android:onClick="onStarClick"/>
+    </LinearLayout>
+  
+    <LinearLayout 
+       android:layout_width="fill_parent"
+       android:layout_height="60dp"
+       android:orientation="horizontal"
+       >
+       <ImageButton 
+           android:id="@+id/addNewPlan"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           android:layout_weight="0.2"
+           android:src="@drawable/newplan_bt_add"
+           android:onClick="onAddClick"/>
+    </LinearLayout>
+</LinearLayout>
