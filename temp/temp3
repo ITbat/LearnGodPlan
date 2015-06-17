@@ -1,0 +1,87 @@
+/*        PCA         */
+#include<iostream> 
+#include<stdio.h>
+#include <stdlib.h>
+#include<fstream>
+#include<string>
+#include<vector>
+#include<iomanip>
+using namespace std;
+
+#define sampleSize 6238
+#define featureSize 617
+#define trainSetPath "F:\\train.csv"
+
+/****              Split the string  Function            ****/
+/****   the input string is a row of the csv file        ****/
+/****   split it and strore each substring in a vector   ****/
+/************************************************************/
+void split(std::string& s, std::string& seperator, vector<string>* ret)
+{
+	size_t last = 0;
+	size_t index = s.find_first_of(seperator, last);
+	while (index != std::string::npos)
+	{
+		ret->push_back(s.substr(last, index - last));
+		last = index + 1;
+		index = s.find_first_of(seperator, last);
+	}
+	if (index - last>0)
+	{
+		ret->push_back(s.substr(last, index - last));
+	}
+}
+
+int main() {
+	ifstream infile;
+	ofstream outfile;
+	string dataString;
+	vector<string> vec;
+	string seperator = ",";
+	float data[618]; // data[617] is lable
+	float sum, ave;
+	int count = 0;
+	infile.open(trainSetPath);
+	infile >> dataString;
+	outfile.open("F:\\PCA_train.csv", ofstream::out);
+	outfile << dataString << endl;
+
+	for (int i = 0; i < sampleSize; i++){
+		sum = 0;
+		data[0] = 0;
+		count = 0;
+		infile >> dataString;
+		outfile << i << ",";
+
+		split(dataString, seperator, &vec);
+		const char* p;
+		
+		for (int k = 0; k < featureSize + 1; k++) {
+			p = vec[k+1].data();
+			data[k] = atof(p);
+			sum += data[k];
+		}
+		sum -= data[617];
+		vec.clear();
+		// Average
+		ave = sum / (featureSize + 1);
+		// P C A
+
+		for (int k = 0; k < featureSize; k++) {
+			data[k] -= ave;
+			outfile << data[k] << ",";
+			if (data[k] > 0)
+				count++;
+		}
+		outfile << data[featureSize];
+		outfile << endl;
+
+		cout << i << " " << count << endl;
+	}
+
+	infile.close();
+	outfile.close();
+
+	return 0;
+}
+
