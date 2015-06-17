@@ -240,7 +240,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
          case 2:  
             guideImg_Pet.setImageResource(R.drawable.pressbottom_img_pet);    
             guideText_Pet.setTextColor(blue);  
-            guideLayout_Pet.setBackgroundColor("#FFFFFF"); 
+            guideLayout_Pet.setBackgroundResource(R.drawable.ic_tabbar_bg_click); 
             if (fgPet == null) {      
                 fgPet = new FragmentPet();    
                 transaction.add(R.id.content, fgPet);    
@@ -344,7 +344,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
 	    return super.onKeyDown(keyCode, event);
     } 
     
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){    	
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){ 
+    	super.onActivityResult(requestCode, resultCode, data);
+    	
+        Log.e("ee","call here in mainactivity onActivityResult");
     	if(resultCode == Activity.RESULT_OK && requestCode == 3){
             //重置选项+隐藏所有Fragment    
             clearChioce();  
@@ -365,6 +368,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
             transaction.commitAllowingStateLoss();  
             return;
     	}
+    	
+		//如果当时启动的是选择宠物的Activity,就更新当前显示的宠物,更新BasicInfo中的basic_type列
+		if(requestCode == FragmentPet.REQUEST_CHOOSE_PET && resultCode == Activity.RESULT_OK){
+             //调用宠物fragment的onActivityResult
+			 fgPet.onActivityResult(requestCode, resultCode, data);
+		}
     	
     }
 }

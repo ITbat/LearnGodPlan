@@ -33,10 +33,11 @@ import com.learngodplan.db.BasicInfoDBO;
 import com.learngodplan.db.Food;
 import com.learngodplan.db.FoodDBO;
 import com.learngodplan.home.MainActivity;
+import com.learngodplan.mood.FragmentMood;
 
 public class FragmentPet extends Fragment {
 	//REQUEST_CODE = 2是进入选择宠物列表
-	 public static  int REQUEST_CHOOSE_PET = 2;
+	 public static  int REQUEST_CHOOSE_PET = 10086;
 	
 	private int leftHunger = 0;
 	
@@ -277,22 +278,26 @@ public class FragmentPet extends Fragment {
 	}
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent intent){
-		//如果当时启动的是选择宠物的Activity,就更新当前显示的宠物,更新BasicInfo中的basic_type列
-		if(requestCode == FragmentPet.REQUEST_CHOOSE_PET){
-			Log.d("called choose pet","xxxxxxxxxxxxx");
-			//获取回传的选择了哪个宠物的数据
-			Bundle bd = intent.getExtras();
-			
-            //更新BasicInfo的type
-			Log.d("test updateType", "test updateType");
-			FragmentPet.basicDBO.updatePetType(FragmentPet.myBasic.basicInfoName, bd.getInt("petType"));
-			Log.d("test updateType", "test updateType2");
-			
-			switch(bd.getInt("petType")){
-			case 1: FragmentPet.petImg.setImageResource(R.drawable.pet1);break;
-			case 2: FragmentPet.petImg.setImageResource(R.drawable.pet2);break;
-			case 3: FragmentPet.petImg.setImageResource(R.drawable.pet3);break;
-			}
-		}
-	}
+		    super.onActivityResult(requestCode, resultCode, intent);
+	        Log.e("ee","call  in Fragment onActivityResult");
+	        
+			//如果当时启动的是选择宠物的Activity,就更新当前显示的宠物,更新BasicInfo中的basic_type列
+			if(requestCode == FragmentPet.REQUEST_CHOOSE_PET && resultCode == Activity.RESULT_OK){
+				Log.d("called choose pet","xxxxxxxxxxxxx");
+				//获取回传的选择了哪个宠物的数据
+				Bundle bd = intent.getExtras();
+				
+	            //更新BasicInfo的type
+				Log.d("test updateType", "test updateType");
+				FragmentPet.basicDBO.updatePetType(FragmentPet.myBasic.basicInfoName, bd.getInt("petType"));
+				Log.d("test updateType", "test updateType2");
+				
+				switch(bd.getInt("petType")){
+				case 1: FragmentPet.petImg.setImageResource(R.drawable.pet1);break;
+				case 2: FragmentPet.petImg.setImageResource(R.drawable.pet2);break;
+				case 3: FragmentPet.petImg.setImageResource(R.drawable.pet3);break;
+				}
+			}	    	
+	    }
+
 }

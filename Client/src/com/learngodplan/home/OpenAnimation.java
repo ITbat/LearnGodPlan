@@ -10,7 +10,7 @@ import android.os.Handler;
 import com.example.learngodplan.R;
 
 public class OpenAnimation extends Activity {
-	private int WELCOM_DURATION =  3000;
+	private int WELCOM_DURATION =  2000;
     @Override
    	protected void onCreate(Bundle savedInstanceState) {
 		   super.onCreate(savedInstanceState);
